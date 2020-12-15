@@ -37,30 +37,35 @@ adding the following argument to the sample's command-line:
 
 - Getting Sample Logs
 ```shell
-./cbn_cli.py --credentials_file=~/.chronicle_credentials.json --env=test gen --log_type=TANIUM_TH --start_date=2020-03-01T00:00:00Z --end_date=2020-03-15T12:00:00Z
+./cbn_cli.py --credentials_file=~/.chronicle_credentials.json gen --log_type=TANIUM_TH --start_date=2020-03-01T00:00:00Z --end_date=2020-03-15T12:00:00Z
 ```
 
 - Running Validation
 ```shell
-python cbn_cli.py --credentials_file=~/.chronicle_credentials.json --env=test run --conf_file=tanium_th.conf --log_file=TANIUM_TH_1k.log
+python cbn_cli.py --credentials_file=~/.chronicle_credentials.json run --conf_file=tanium_th.conf --log_file=TANIUM_TH_1k.log
 ```
 
 - Submitting a new parser
 ```shell
-python cbn_cli.py --credentials_file=~/.chronicle_credentials.json --env=test submit --conf_file=tanium_th.conf --log_type=TANIUM_TH --author=foo@bar.com
+python cbn_cli.py --credentials_file=~/.chronicle_credentials.json submit --conf_file=tanium_th.conf --log_type=TANIUM_TH --author=foo@bar.com
 ```
 
 - Getting status of a submitted parser
 ```shell
-python cbn_cli.py --credentials_file=~/.chronicle_credentials.json --env=test status --config_id=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+python cbn_cli.py --credentials_file=~/.chronicle_credentials.json status --config_id=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
 ```
 
 - Getting history of a given parser
 ```shell
-python cbn_cli.py --credentials_file=~/.chronicle_credentials.json --env=test history --log_type=TANIUM_TH
+python cbn_cli.py --credentials_file=~/.chronicle_credentials.json history --log_type=TANIUM_TH
 ```
 
 - List all parsers of a given customer
 ```shell
-python cbn_cli.py --credentials_file=~/.chronicle_credentials.json --env=test list
+python cbn_cli.py --credentials_file=~/.chronicle_credentials.json list
+```
+
+- List errors of a log_type between specific timestamps 
+```shell
+python cbn_cli.py --credentials_file=~/.chronicle_credentials.json err --start_date=2020-09-16T00:00:00Z --end_date=2020-09-18T12:00:00Z --log_type=SENTINEL_DV
 ```

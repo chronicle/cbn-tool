@@ -41,7 +41,6 @@ DEFAULT_CREDS_FILE_PATH = os.path.join(os.environ['HOME'],
 CHRONICLE_API_V1_URL = 'https://backstory.googleapis.com/v1'
 CHRONICLE_API_EUROPE_V1_URL = 'https://europe-backstory.googleapis.com/v1'
 CHRONICLE_API_ASIA_URL = 'https://asia-southeast1-backstory.googleapis.com/v1'
-CHRONICLE_TEST_API_V1_URL = 'https://test-backstory.sandbox.googleapis.com/v1'
 
 # HTTP Request related constants.
 HTTP_REQUEST_TIMEOUT_IN_SECS = 1200
@@ -122,7 +121,7 @@ def get_http_client(args):
   # Create a credential using Google Developer Service Account Credential and
   # Backstory API Scope.
   credentials = service_account.Credentials.from_service_account_file(
-      args.api_creds_file, scopes=AUTHORIZATION_SCOPES)
+      args.credentials_file, scopes=AUTHORIZATION_SCOPES)
 
   # Build a Http client that can make authorized OAuth requests.
   http_client = _auth.authorized_http(credentials)
