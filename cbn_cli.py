@@ -30,8 +30,8 @@ import sys
 import time
 import urllib
 
-from googleapiclient import _auth
 from google.oauth2 import service_account
+from googleapiclient import _auth
 
 AUTHORIZATION_SCOPES = ['https://www.googleapis.com/auth/chronicle-backstory']
 DEFAULT_CREDS_FILE_PATH = os.path.join(os.environ['HOME'],
