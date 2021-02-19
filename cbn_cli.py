@@ -152,8 +152,8 @@ def generate(args):
     ~/cbn/<log_type>/log_type_1.conf - ~/cbn/<log_type>/log_type_10.conf -
     ~/cbn/<log_type>/log_type_1k.conf - etc.
   """
-  sample_sizes = ['1', '10']
-  sample_names = ['1', '10']
+  sample_sizes = ['1', '10', '1000']
+  sample_names = ['1', '10', '1k']
 
   # Collect data from yesterday if specific date not provided
   start_date = args.start_date
@@ -166,7 +166,7 @@ def generate(args):
 
   # Generate sample data of given sizes
   for i, size in enumerate(sample_sizes):
-    outfile = '{0}/{1}_{2}.log'.format(sample_dir, args.log_type,
+    outfile = '{0}/{1}_{2}.log'.format(sample_dir, args.log_type.lower(),
                                        sample_names[i])
     print(
         '\nGenerating sample size: {}... '.format(sample_names[i]),
@@ -258,12 +258,10 @@ def call_create_parser(args):
                         HTTP_REQUEST_HEADERS)
   del parser['config']
   print(json.dumps(parser, indent=2))
-  print('To Get status of the parser run the following command:')
-  env = 'prod'
-  if args.env:
-    env = args.env
-  print((f'python cbn_cli.py --env={env}' +
-         f'--credentials_file={args.credentials_file}' +
+
+  print('To get status of the parser run the following command:')
+  print((f'python cbn_cli.py --region={args.region} ' +
+         f'--credentials_file={args.credentials_file} ' +
          f'status --config_id={parser["configId"]}'))
   return parser
 
@@ -394,7 +392,7 @@ def call_download_parser(args, config_id, log_type):
       sys.exit(1)
 
   decoded_config = base64.b64decode(parser['config'])
-  decoded_config = decoded_config.decode('ascii')
+  decoded_config = decoded_config.decode('utf-8')
   timestr = time.strftime('%Y%m%d%H%M%S')
   filename = parser['logType'] + '_' + timestr + '.conf'
   print(f'Writing parser to: {filename}')
