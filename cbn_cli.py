@@ -364,7 +364,7 @@ def call_validate_cbn_parser(args, config_file_path, log_file_path):
   if errors:
     for err in errors:
       print(err['errorMsg'])
-      print(type(err['logEntry']))
+      print(err['logEntry'])
   return output_results
 
 
