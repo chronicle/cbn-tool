@@ -360,13 +360,11 @@ def call_validate_cbn_parser(args, config_file_path, log_file_path):
     output_results.append(results)
     for result in results:
       print(result)
-  else:
-    errors = result_response.get('errors')
-    if errors:
-      for err in errors:
-        print(err['errorMsg'])
-        print('on log entry')
-        print(type(err['logEntry']))
+  errors = result_response.get('errors')
+  if errors:
+    for err in errors:
+      print(err['errorMsg'])
+      print(err['logEntry'])
   return output_results
 
 
