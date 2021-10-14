@@ -331,8 +331,13 @@ def call_get_sample_logs(args, log_type, start_time, end_time,
   sample_logs_data = sample_logs.get('data', [])
   for sample_log in sample_logs_data:
     with open(file_path, 'a') as f:
-      f.write(base64.b64decode(sample_log).decode())
+      f.write(decode_sample_log(sample_log))
       f.write('\n')
+
+
+def decode_sample_log(sample_log):
+  log_bytes = base64.b64decode(sample_log)
+  return log_bytes.decode(encoding='utf-8', errors='surrogateescape')
 
 
 def call_validate_cbn_parser(args, config_file_path, log_file_path):

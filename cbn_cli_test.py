@@ -195,6 +195,11 @@ class CbnCliTest(unittest.TestCase):
     cbn_cli.parser_errors(args)
     self.mock_make_request.assert_called_with(args, url)
 
+  def test_decode_sample_log(self):
+    sample_log = base64.encodebytes(b'start\x9c\x89\xf4end')
+    decoded_log = cbn_cli.decode_sample_log(sample_log)
+    self.assertEqual('start\udc9c\udc89\udcf4end', decoded_log)
+
   @parameterized.expand([
       ('download expects either log_type or config_id', 'download'),
       ('download expects only one of log_type or config_id',
