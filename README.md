@@ -33,6 +33,17 @@ adding the following argument to the sample's command-line:
 --credentials_file <path>
 ```
 
+
+## Region
+
+The Chronicle instance will have a region (`US`, `ASIA` or `EUROPE`). By default, 
+the CLI will use `US`. If you need to point to another region, you need to
+specify it explicitly by adding the following argument to the command-line:
+
+```shell
+--region <region>
+```
+
 ## Usage
 
 - Getting Sample Logs
