@@ -141,7 +141,7 @@ def make_request(args, url, method='GET', body=None, headers=None):
 
 
 def generate(args):
-  """Generates sample data for writing CBNs using the cli_main CLI utlity.
+  """Generates sample data for writing CBNs using the cli_main CLI utility.
 
   Args:
     args: dict containing:
