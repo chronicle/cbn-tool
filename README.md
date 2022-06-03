@@ -72,6 +72,6 @@ python cbn_cli.py --credentials_file=~/.chronicle_credentials.json error --start
 
 - Download a parser to a file, formatted.
 ```shell
-python cbn_cli.py --credentials_file=~/.chronicle_credentials.json download --log_type=TANIUM_TH --config_id=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+python cbn_cli.py --credentials_file=~/.chronicle_credentials.json download --log_type=TANIUM_TH
 ```
 
