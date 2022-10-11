@@ -133,11 +133,16 @@ def make_request(args, url, method='GET', body=None, headers=None):
   http_client = get_http_client(args)
   http_client.http.timeout = HTTP_REQUEST_TIMEOUT_IN_SECS
   response = http_client.request(url, method, body, headers)
+  response_body = json.loads(response[1])
   if response[0].status != http.HTTPStatus.OK:
     err = response[1]
     print(json.dumps(json.loads(err), indent=2))
     sys.exit(1)
-  return json.loads(response[1])
+  if bool(response_body) is False:
+    print("ERROR: response empty")
+    print(json.dumps(json.loads(response[1]), indent=2))
+    sys.exit(1)
+  return response_body
 
 
 def generate(args):
