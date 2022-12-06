@@ -57,6 +57,7 @@ class CbnCliTest(unittest.TestCase):
       ('', cbn_cli.CHRONICLE_API_V1_URL),
       ('EUROPE', cbn_cli.CHRONICLE_API_EUROPE_V1_URL),
       ('ASIA', cbn_cli.CHRONICLE_API_ASIA_URL),
+      ('UK', cbn_cli.CHRONICLE_API_UK_V1_URL),
   ])
   def test_get_connecting_url(self, region, expected_url):
     args = cbn_cli.arg_parser().parse_args()
