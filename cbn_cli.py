@@ -40,6 +40,7 @@ DEFAULT_CREDS_FILE_PATH = os.path.join(os.environ['HOME'],
 # URLs for Chronicle CBN API endpoints.
 CHRONICLE_API_V1_URL = 'https://backstory.googleapis.com/v1'
 CHRONICLE_API_EUROPE_V1_URL = 'https://europe-backstory.googleapis.com/v1'
+CHRONICLE_API_UK_V1_URL = 'https://europe-west2-backstory.googleapis.com/v1'
 CHRONICLE_API_ASIA_URL = 'https://asia-southeast1-backstory.googleapis.com/v1'
 
 # HTTP Request related constants.
@@ -54,6 +55,8 @@ def get_connecting_url(args):
     url = CHRONICLE_API_EUROPE_V1_URL
   elif args.region == 'ASIA':
     url = CHRONICLE_API_ASIA_URL
+  elif args.region == 'UK':
+    url = CHRONICLE_API_UK_V1_URL
 
   return url
 
@@ -427,7 +430,7 @@ def arg_parser():
       '--region',
       type=str,
       default='US',
-      choices=['US', 'EUROPE', 'ASIA'],
+      choices=['US', 'EUROPE', 'ASIA', 'UK'],
       help="""Optionally specify
                         the region for API calls""")
   parser.add_argument(
