@@ -65,7 +65,7 @@ python cbn_cli.py --credentials_file=~/.chronicle_credentials.json history --log
 python cbn_cli.py --credentials_file=~/.chronicle_credentials.json list
 ```
 
-- List errors of a log_type between specific timestamps 
+- List errors of a log_type between specific timestamps
 ```shell
-python cbn_cli.py --credentials_file=~/.chronicle_credentials.json error --start_date=2020-09-16T00:00:00Z --end_date=2020-09-18T12:00:00Z --log_type=TANIUM_TH
+python cbn_cli.py --credentials_file=~/.chronicle_credentials.json err --start_date=2020-09-16T00:00:00Z --end_date=2020-09-18T12:00:00Z --log_type=TANIUM_TH
 ```

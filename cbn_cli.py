@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,6 +13,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 """Command line tool to interact with Chronicle's Config Based Normalizer APIs.
 
 Config Based Normalizer (CBN) APIs allow customers to manage config based
@@ -40,6 +43,7 @@ DEFAULT_CREDS_FILE_PATH = os.path.join(os.environ['HOME'],
 # URLs for Chronicle CBN API endpoints.
 CHRONICLE_API_V1_URL = 'https://backstory.googleapis.com/v1'
 CHRONICLE_API_EUROPE_V1_URL = 'https://europe-backstory.googleapis.com/v1'
+CHRONICLE_API_UK_V1_URL = 'https://europe-west2-backstory.googleapis.com/v1'
 CHRONICLE_API_ASIA_URL = 'https://asia-southeast1-backstory.googleapis.com/v1'
 
 # HTTP Request related constants.
@@ -52,6 +56,8 @@ def get_connecting_url(args):
   url = CHRONICLE_API_V1_URL
   if args.region == 'EUROPE':
     url = CHRONICLE_API_EUROPE_V1_URL
+  elif args.region == 'UK':
+    url = CHRONICLE_API_UK_V1_URL
   elif args.region == 'ASIA':
     url = CHRONICLE_API_ASIA_URL
 
@@ -427,7 +433,7 @@ def arg_parser():
       '--region',
       type=str,
       default='US',
-      choices=['US', 'EUROPE', 'ASIA'],
+      choices=['US', 'EUROPE', 'UK', 'ASIA'],
       help="""Optionally specify
                         the region for API calls""")
   parser.add_argument(

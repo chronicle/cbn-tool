@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -56,6 +58,7 @@ class CbnCliTest(unittest.TestCase):
   @parameterized.expand([
       ('', cbn_cli.CHRONICLE_API_V1_URL),
       ('EUROPE', cbn_cli.CHRONICLE_API_EUROPE_V1_URL),
+      ('UK', cbn_cli.CHRONICLE_API_UK_V1_URL),
       ('ASIA', cbn_cli.CHRONICLE_API_ASIA_URL),
   ])
   def test_get_connecting_url(self, region, expected_url):
