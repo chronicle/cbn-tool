@@ -1,3 +1,5 @@
+**Note**: The cbn-tool CLI will be deprecated on 29 December, 2023. Developers are requested to use the new Chronicle [CLI](https://cloud.google.com/chronicle/docs/preview/cli-user-guide/cli-user-guide).
+
 # Chronicle CBN Tool
 
 Command line tool to interact with Chronicle's Config Based Normalizer APIs.
