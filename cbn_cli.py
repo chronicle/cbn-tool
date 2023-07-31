@@ -37,8 +37,8 @@ from google.oauth2 import service_account
 from googleapiclient import _auth
 
 AUTHORIZATION_SCOPES = ['https://www.googleapis.com/auth/chronicle-backstory']
-DEFAULT_CREDS_FILE_PATH = os.path.join(os.environ['HOME'],
-                                       '.chronicle_credentials.json')
+DEFAULT_CREDS_FILE_PATH = os.path.join(os.path.expanduser('~'),
+                                       'chronicle_credentials.json')
 
 # URLs for Chronicle CBN API endpoints.
 CHRONICLE_API_V1_URL = 'https://backstory.googleapis.com/v1'
@@ -570,4 +570,13 @@ def main(input_args):
 
 
 if __name__ == '__main__':
-  main(sys.argv[1:])
+  try:
+    main(sys.argv[1:])
+  except AttributeError:
+    time.sleep(1)
+    print(f"The command was incorrect or did not contain a function to run. Please see \"help\" by running the command \"python cbn_cli.py --help\"\n\n\n")
+    time.sleep(1)
+    if len(sys.argv) == 1:
+      parser = arg_parser()
+      parser.print_help()
+      sys.exit(1)
