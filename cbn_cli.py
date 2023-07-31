@@ -267,7 +267,7 @@ def call_create_parser(args):
   print(json.dumps(parser, indent=2))
 
   print('To get status of the parser run the following command:')
-  print((f'python cbn_cli.py --region={args.region} ' +
+  print((f'python3 cbn_cli.py --region={args.region} ' +
          f'--credentials_file={args.credentials_file} ' +
          f'status --config_id={parser["configId"]}'))
   return parser
