@@ -32,6 +32,7 @@ class CbnCliTest(unittest.TestCase):
     self.log_type = 'test_log_type'
     self.author = 'test_user'
     self.config_id = 'test_config_id'
+    self.skip_validation_on_no_logs = False
     self.parser = json.loads('{{'
                              '"configId": "{}",'
                              '"author": "{}",'
@@ -91,8 +92,12 @@ class CbnCliTest(unittest.TestCase):
 
   @mock.patch('os.path.exists', lambda x: True)
   def test_create_parser(self):
-    cmd_line_args = 'submit -l={} -c={} -a={}'.\
-        format(self.log_type, self.parser_file_name, self.author)
+    cmd_line_args = (
+        'submit -l={} -c={} -a={} --skip_validation_on_no_logs={}').format(
+            self.log_type,
+            self.parser_file_name,
+            self.author,
+            self.skip_validation_on_no_logs)
     url = '{}/tools/cbnParsers'.format(cbn_cli.CHRONICLE_API_V1_URL)
     parser = json.loads('{"configId": "test_config_id", "config": "test"}')
     self.mock_make_request.return_value = parser

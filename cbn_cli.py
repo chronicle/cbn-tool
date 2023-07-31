@@ -254,7 +254,8 @@ def call_create_parser(args):
   data = {
       'config': base64.urlsafe_b64encode(config_data),
       'log_type': args.log_type,
-      'author': args.author
+      'author': args.author,
+      'skip_validation_on_no_logs': args.skip_validation_on_no_logs,
   }
   body = urllib.parse.urlencode(data)
   create_parser_url = get_create_parser_url(args)
@@ -492,6 +493,12 @@ def arg_parser():
       help='File path to config')
   parser_create_command.add_argument(
       '-a', '--author', required=True, help='Author of the config')
+  parser_create_command.add_argument(
+      '--skip_validation_on_no_logs',
+      required=True,
+      help='Skip validation if no logs are found',
+      type=bool,
+  )
   parser_create_command.set_defaults(func=create_parser)
 
   # "status" command
