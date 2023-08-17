@@ -375,8 +375,8 @@ def call_validate_cbn_parser(args, config_file_path, log_file_path):
   errors = result_response.get('errors')
   if errors:
     for err in errors:
-      print(err['errorMsg'])
-      print(err['logEntry'])
+      print(err.get('errorMsg', 'Error. No errorMsg found.'))
+      print(err.get('logEntry', 'Error. No logEntry found.'))
   return output_results
 
 
@@ -392,19 +392,23 @@ def call_download_parser(args, config_id, log_type):
       print('No CBN parsers currently configured')
       sys.exit(1)
     found = False
-    for p in response['cbnParsers']:
-      if p['logType'] == log_type:
-        found = True
-        parser = p
-        break
-    if not found:
-      print(f'Parser for log type {log_type} not found')
-      sys.exit(1)
-
-  decoded_config = base64.b64decode(parser['config'])
+    if response.get('cbnParsers') is not None:
+      for p in response.get('cbnParsers'):
+        if p.get('logType') == log_type:
+          found = True
+          parser = p
+          break
+      if not found:
+        print(f'Parser for log type {log_type} not found')
+        sys.exit(1)
+  
+  if parser.get('config') is None:
+    print(f'Parser config for log type {log_type} not found')
+    sys.exit(1)
+  decoded_config = base64.b64decode(parser.get('config'))
   decoded_config = decoded_config.decode('utf-8')
   timestr = time.strftime('%Y%m%d%H%M%S')
-  filename = parser['logType'] + '_' + timestr + '.conf'
+  filename = parser.get('logType') + '_' + timestr + '.conf'
   print(f'Writing parser to: {filename}')
   with open(filename, 'a') as f:
     f.write(decoded_config)
