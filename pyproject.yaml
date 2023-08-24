@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "cbn-tool"
+version = "0.1.0"
+description = "Command line tool to interact with Chronicle's Config Based Normalizer APIs."
+authors = ["Krishna Suravaram <krishnasantosh>"]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [{include = "cbn_cli.py"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+google-api-python-client = ">=1.11.0"
+parameterized = ">=0.7.4"
+
+[tool.poetry.scripts]
+cbn_cli = "cbn_cli:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
