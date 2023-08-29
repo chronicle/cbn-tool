@@ -485,12 +485,12 @@ def arg_parser():
       'submit', help='submits a configuration to the validation queue')
   parser_create_command.add_argument(
       '-l', '--log_type', required=True, help='Log Type')
-  parser_create_command.add_argument(
-      '-c',
-      '--conf_file',
-      type=resolve_file_path,
-      required=True,
-      help='File path to config')
+  # parser_create_command.add_argument(
+  #     '-c',
+  #     '--conf_file',
+  #     type=resolve_file_path,
+  #     required=True,
+  #     help='File path to config')
   parser_create_command.add_argument(
       '-a', '--author', required=True, help='Author of the config')
   parser_create_command.add_argument(
