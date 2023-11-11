@@ -71,3 +71,9 @@ python cbn_cli.py --credentials_file=~/.chronicle_credentials.json list
 ```shell
 python cbn_cli.py --credentials_file=~/.chronicle_credentials.json err --start_date=2020-09-16T00:00:00Z --end_date=2020-09-18T12:00:00Z --log_type=TANIUM_TH
 ```
+
+- Download a parser to a file, formatted.
+```shell
+python cbn_cli.py --credentials_file=~/.chronicle_credentials.json download --log_type=TANIUM_TH
+```
+
